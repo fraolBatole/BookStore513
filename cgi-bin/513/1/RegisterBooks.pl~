@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+B#!/usr/bin/perl
 use CGI; 
 $query   = new CGI;
 
