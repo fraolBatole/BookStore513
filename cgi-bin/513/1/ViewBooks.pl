@@ -61,18 +61,18 @@ print <<ENDOFTAG;
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href=""http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/ViewBooks.cgi>
+            <a href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/ViewBooks.cgi">
               <i class="fa fa-list"></i>
               <p>List Books</p>
             </a>
           </li>
           <li>
-            <a href="../../../513/1/registerBook.html">
+            <a href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/RegisterBooks.cgi">
               <i class="fa fa-book"></i>
               <p>Register a Book</p>
             </a>
           </li>
-            <li>
+          <li>
             <a href="../../../513/1/registerAuthor.html">
               <i class="fa fa-users"></i>
               <p>Register Author</p>
