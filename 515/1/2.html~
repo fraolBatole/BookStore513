@@ -1,0 +1,76 @@
+<html>
+ <head>
+  <meta content='noindex,nofollow' name='robots'>
+  <link rel="stylesheet" type="text/css"
+    href="http://undcemcs01.und.edu/~wen.chen.hu/css/1.css" />
+  <title>Interface II</title>
+ </head>
+
+ <body text="#000000" vLink="#3366CC" link="#3366CC" bgColor="#ffffff" alink="#3366CC" background="http://undcemcs01.und.edu/~wen.chen.hu/bg/701.jpg">
+
+ <table width='100%' height='80%'>
+  <tr>
+   <td align='center' valign='middle'>
+
+
+<table width="85%" cellspacing="0" cellpadding="10" border="0" class="shadow">
+ <form method="post" action="2.php">
+ <tr bgcolor="#336699">
+  <th id="header" align="left" colspan="3">
+   <font face="Verdana, Arial, Helvetica" color="white" size="2"> &nbsp; Enter Time, Number of Pages, and Seed URL to Index Web Pages.</font>
+  </th>
+ </tr>
+ <tr bgcolor="#CCEEFF">
+  <td width="2%"></td>
+  <td width="73%" valign="middle">
+   <font face="Verdana, Arial, Helvetica" size="2">
+    <br class="s" />
+    Maximum execution time (minutes) (&le; 5):
+    <input type="text" name="time" size="3" value="5" max="5" min="0">
+    <br /><br class="s" />
+    Keyword:
+    <input type="text" name="keyword" size="10" value="200" max="500" min="0">
+    <br /><br class="s" />
+    URL:
+    <input type="text" name="URL" size="55" value="http://www.w3schools.com/xml/">
+    <br /><br class="s" />
+   </font>
+  </td>
+  <td align="center" valign="middle" width="25%">
+   <input type="submit" name="act" value="Index">
+   <br /><br class="s" />
+   <input type="submit" name="act" value="Home">
+   <br /><br class="s" />
+   <input type="submit" name="act" value="Help">
+   <br /><br class="s" />
+   <input type="reset"             value="reset">
+   <button type="submit" formaction="test.php">Test DB</button>
+ </td>
+ </tr>
+ </form>
+
+ <form method="post" action="test.php">
+ <tr bgcolor="#84ADCD">
+  <td colspan="3">
+   <font face="Verdana, Arial, Helvetica" size="1">
+   &nbsp; <b>Password:</b></font>
+   <input type="password" size="16" name="password" value="password"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+   <input type="submit" name="act" value="Display source"> &nbsp; &nbsp;
+   <input type="submit" name="act" value="Help"> &nbsp; &nbsp;
+   <input type="hidden" name="interface" value="2">
+  
+   <input type="submit" action="test,php" value="Test DB">
+   </font>
+  </td>
+ </tr>
+ </form>
+
+</table>
+
+
+   </td>
+  </tr>
+ </table>
+
+ </body>
+</html>

@@ -2,9 +2,14 @@ import java.sql.*;
 import java.io.*;
 import oracle.jdbc.*;
 import oracle.jdbc.pool.OracleDataSource;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 class RegisterBooks{
-    public static void main (String [] args) throws SQLException {
+    public static void main (String [] args) throws SQLException,IOException, InterruptedException {
 	   String user = "C##fraol.ahmed";
            String password = "fraol7124";
 	   String database = "65.52.222.73:1521/cdb1";
@@ -35,6 +40,17 @@ class RegisterBooks{
 	       	pstmt.execute();
 		
 		pstmt.close();
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+		    .uri(URI.create("http://google.com"))
+		    .GET() // GET is default
+		    .build();
+
+		HttpResponse<String> response = client.send(request,
+							    HttpResponse.BodyHandlers.ofString());
+
+		System.out.println(response.body());
 		
 	   } catch (SQLException ex) {
 	   	System.out.println(ex);
