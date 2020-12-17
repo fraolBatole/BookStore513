@@ -5,9 +5,9 @@ import oracle.jdbc.pool.OracleDataSource;
 
 class ListAllBooks {
 	public static void main (String [] args) throws SQLException {
-	   String user = "C##fraol.ahmed";
-           String password = "fraol7124";
-	   String database = "65.52.222.73:1521/cdb1";
+	   String user = "#";
+           String password = "#";
+	   String database = "#";
 	
 
 	   OracleDataSource ods = new OracleDataSource ();
