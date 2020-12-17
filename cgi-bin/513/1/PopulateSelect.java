@@ -31,7 +31,7 @@ class PopulateSelect {
 	  	System.out.println("<div class='col-md-4 pr-1'>");
 	        System.out.println("<div class='form-group'>");
 	        System.out.println("<label for = 'sel1'> Publisher </label>");
-		System.out.println("<select multiple class = 'form-control' name = 'publisher' id = 'publisher'>");
+		System.out.println("<select class = 'form-control' name = 'publisher' id = 'publisher' required>");
             while ( rs.next() ) {
 		
 	        System.out.println("<option value = '"+rs.getInt("pub_id")+"'>" + rs.getString("publisher_name")+"</option>");
@@ -53,7 +53,7 @@ class PopulateSelect {
 	  	System.out.println("<div class='col-md-4 pr-1'>");
 	        System.out.println("<div class='form-group'>");
 	        System.out.println("<label> Author </label>");
-		System.out.println("<select multiple class = 'form-control' name = 'author' id = 'author'>");
+		System.out.println("<select multiple class = 'form-control' name = 'author' id = 'author' required>");
             while ( rsA.next() ) {
 		
 	        System.out.println("<option value = '"+rsA.getInt("author_id")+"' >" + rsA.getString("author_name")+"</option>");
@@ -75,7 +75,7 @@ class PopulateSelect {
 	  	System.out.println("<div class='col-md-4 pr-1'>");
 	        System.out.println("<div class='form-group'>");
 	        System.out.println("<label> Genre </label>");
-		System.out.println("<select multiple class = 'form-control' name = 'genre' id = 'genre'>");
+		System.out.println("<select multiple class = 'form-control' name = 'genre' id = 'genre' required>");
             while ( rsG.next() ) {
 		
 	        System.out.println("<option value = '"+rsG.getInt("genre_id")+"'>" + rsG.getString("genre_name")+"</option>");

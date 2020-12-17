@@ -103,13 +103,14 @@ print <<ENDOFTAG;
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user-circle-o"></i>
-                 
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user-circle-o"></i>                
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+               <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Account Detail</a>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="../../../513/1/index.html">Log out</a>
+		  <a class="dropdown-item" href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/displayCode.cgi?act=2">Display Code</a>
+		  <a class="dropdown-item" href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/resetSystem.cgi">Reset System</a>
                 </div>
               </li>
             </ul>
@@ -141,13 +142,13 @@ print <<ENDOFTAG;
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Book Title</label>
-                        <input type="text" class="form-control" placeholder="Book Title" name="title" id= "title" >
+                        <input type="text" class="form-control" placeholder="Book Title" name="title" id= "title" required>
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>ISBN</label>
-                        <input type="text" class="form-control" placeholder="ISBN" name= "isbn" id="isbn">
+                        <input type="text" class="form-control" placeholder="ISBN" name= "isbn" id="isbn" required>
                       </div>
                     </div>
                   </div>  

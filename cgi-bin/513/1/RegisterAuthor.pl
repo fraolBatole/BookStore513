@@ -15,7 +15,7 @@ ENDOFTAG
 	print("Successfully Saved!!!");
 
 my $url = "http://undcemcs02.und.edu/~fraol.ahmed/513/1/registerAuthor.html";
-my $t = 2;
+my $t = 1;
 print "<META HTTP-EQUIV=refresh CONTENT=\"$t;URL=$url\">\n";
 
 print <<ENDOFTAG;

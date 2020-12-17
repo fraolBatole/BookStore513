@@ -1,15 +1,11 @@
 import java.sql.*;
 import java.io.*;
+import java.util.*;
 import oracle.jdbc.*;
 import oracle.jdbc.pool.OracleDataSource;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 class RegisterBooks{
-    public static void main (String [] args) throws SQLException,IOException, InterruptedException {
+    public static void main (String [] args) throws SQLException {
 	   String user = "C##fraol.ahmed";
            String password = "fraol7124";
 	   String database = "65.52.222.73:1521/cdb1";
@@ -22,36 +18,29 @@ class RegisterBooks{
 	   Connection conn = ods.getConnection();
 
 	   try{
-	     PreparedStatement pstmt = conn.prepareStatement("INSERT INTO books (title,book_isbn,pub_id,author_id,genre_id) VALUES (?,?,?,?,?)");
-	     	
+		Statement stmt = conn.createStatement();
 	        String title = args[0].trim();
 		String isbn = args[1].trim();
 		int publisher = Integer.parseInt(args[2].trim());
-		int author = Integer.parseInt(args[3].trim());
-		int genre = Integer.parseInt(args[4].trim());
+		ArrayList<String> listAuthor = new ArrayList<String>();
+		ArrayList<String> listGenre = new ArrayList<String>();
 
-		//System.out.println(title + isbn + publisher + author + genre);
-		pstmt.setString(1, title);
-		pstmt.setString(2, isbn);
-		pstmt.setInt(3, publisher);
-		pstmt.setInt(4, author);
-		pstmt.setInt(5, genre);
+		for (int i = 3; i < args.length; i++){
+		    if(args[i].trim().contains("a")){
+			listAuthor.add(args[i].trim().replace("a",""));
+		    }
+		    else if(args[i].trim().contains("g")){
+			listGenre.add(args[i].trim().replace("g",""));
+		    }
+		}
+		String query = "INSERT INTO books VALUES ('"+title+"','"+ isbn +"', "+ publisher +", ";
+		query += "author_l("+ listAuthor.toString().replace("[","").replace("]","") +"),";
+		query += "genre_l("+ listGenre.toString().replace("[","").replace("]","") +"))";
+		System.out.println(query);
 
-	       	pstmt.execute();
-		
-		pstmt.close();
-
-		HttpClient client = HttpClient.newHttpClient();
-		HttpRequest request = HttpRequest.newBuilder()
-		    .uri(URI.create("http://google.com"))
-		    .GET() // GET is default
-		    .build();
-
-		HttpResponse<String> response = client.send(request,
-							    HttpResponse.BodyHandlers.ofString());
-
-		System.out.println(response.body());
-		
+		stmt.executeQuery(query);
+		stmt.close();
+						
 	   } catch (SQLException ex) {
 	   	System.out.println(ex);
 	   }

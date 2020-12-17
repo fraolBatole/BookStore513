@@ -28,6 +28,9 @@ print <<ENDOFTAG;
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!--     Scripts for Modal     -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
@@ -45,13 +48,7 @@ print <<ENDOFTAG;
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-          <!-- <div class="logo-image-small">
-            <img src="../../../513/1/assets/img/logo-small.png">
-          </div> -->
-          <!-- <p>CT</p> -->
-        </a>
-        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+         <a href="#" class="simple-text logo-normal">
           513 Book Store
           <!-- <div class="logo-image-big">
             <img src="../../../513/1/assets/img/logo-big.png">
@@ -110,13 +107,15 @@ print <<ENDOFTAG;
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fa fa-user-circle-o"></i>
                  
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Account Detail</a>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="../../../513/1/index.html">Log out</a>
+		  <a class="dropdown-item" href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/displayCode.cgi?act=1">Display Code</a>
+		  <a class="dropdown-item" href="http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/resetSystem.cgi">Reset System</a>
                 </div>
               </li>
             </ul>
@@ -127,16 +126,28 @@ print <<ENDOFTAG;
       <div class="content">
         <div class="row">
           <div class="col-md-12">
+	    <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">View Books</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                 
+                  <div class="col-md-12">
+                    <div class="card card-plain">
+                      <div class="card-header">
+                      </div>
+                      <div class="card-body">
             <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
               <tr>
                 <th>ID</th>
                 <th>Title</th>
                 <th>ISBN</th>
-                <th>Author</th>
                 <th>Publisher</th>
+                <th>Author</th>
                 <th>Genre</th>
-                  <th>Edit</th>
+                  
                     <th>Delete</th>
               </tr>
             </thead>
@@ -146,10 +157,10 @@ print <<ENDOFTAG;
                 <th>Id </th>
                 <th>Title</th>
                 <th>ISBN</th>
-                <th>Author</th>
                 <th>Publisher</th>
+                <th>Author</th>
                 <th>Genre</th>
-                   <th>Edit</th>
+                  
                    <th>Delete</th>
               </tr>
             </tfoot>
@@ -163,57 +174,144 @@ print <<ENDOFTAG;
                
             </tbody>
           </table>
+		</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
           </div>
         </div>
+
+<!-- /.modal-dialog for books beigns -->
+<div class="modal fade mybooks" id="mybooks" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 class="modal-title custom_align" id="Heading" value="YES">View Books Detail</h4>
       </div>
-      <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-        <div class="modal-dialog">
-      <div class="modal-content">
-            <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-        </div>
-            <div class="modal-body">
-            <div class="form-group">
-          <input class="form-control " type="text" placeholder="Tiger Nixon">
+      <div class="modal-body">
+	   <script>
+
+              function demoBooks(e) {
+		 
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200 ){
+				document.getElementById("booksContent").innerHTML = this.responseText;
+			}
+		};
+		var x = e.target.id;
+                xhttp.open("GET", "http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/listAllBooks.cgi?isbn="+x,true);
+		xhttp.send();
+
+              }		
+		
+            </script>
+
+          <div class="form-group" id = "booksContent">
+            
+            <!-- content goes here -->
           </div>
-          <div class="form-group">
-          
-          <input class="form-control " type="text" placeholder="System Architect">
-          </div>
-          <div class="form-group">
-          
-          
-       		 <input class="form-control " type="text" placeholder="Edinburgh">
-          
-          </div>
-        </div>
-            <div class="modal-footer ">
-          <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
-        </div>
        </div>
-      <!-- /.modal-content --> 
-    </div>
-        <!-- /.modal-dialog --> 
+      <div class="modal-footer ">
       </div>
-      <footer class="footer" style="position: absolute; bottom: 0; width: -webkit-fill-available;">
-        <div class="container-fluid">
-          <div class="row">
-            <nav class="footer-nav">
-              <ul>
-                <!-- <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li> -->
-              </ul>
-            </nav>
-            <div class="credits ml-auto">
-              <span class="copyright">
-                © 2020, made with <i class="fa fa-heart heart"></i> by Fraol
-              </span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
+    <!-- /.modal-content -->
   </div>
+  
+</div><!-- /.modal-dialog end for books-->
+
+<!-- /.modal-dialog for author beigns -->
+<div class="modal fade myauthor" id="myauthor" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 class="modal-title custom_align" id="Heading" value="YES">View Authors Detail</h4>
+      </div>
+      <div class="modal-body">
+	   <script>
+
+              function demoAuthor(e) {
+		 
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200 ){
+				document.getElementById("authorContent").innerHTML = this.responseText;
+			}
+		};
+		var x = e.target.id;
+                xhttp.open("GET", "http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/displayAuthor.cgi?id="+x,true);
+		xhttp.send();
+              }		
+		
+            </script>
+
+          <div class="form-group" id = "authorContent">
+            
+            <!-- content goes here -->
+          </div>
+       </div>
+      <div class="modal-footer ">
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  
+</div><!-- /.modal-dialog end for author-->
+
+	<!-- Modal begins for speciality/genre -->
+	<div class="modal fade myedit" id="myedit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+      <div class="modal-content"> 
+            <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <h4 class="modal-title custom_align" id="Heading" value="YES">View Speciality/Genre Detail</h4>
+        	</div>
+            <div class="modal-body">
+	<!--	      <form method = "get" action = "http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/editGenre.cgi"> -->
+			<script>
+									
+				function demoFun(e){
+
+					var xhttp;
+					xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					 if (this.readyState == 4 && this.status == 200 ){
+						document.getElementById("genreContent").innerHTML = this.responseText;
+					 }
+					};
+					var x = e.target.id;
+                			xhttp.open("GET", "http://undcemcs02.und.edu/~fraol.ahmed/cgi-bin/513/1/editGenre.cgi?id="+x,true);
+					xhttp.send();
+				}				
+			</script>
+           	<div class="form-group" id = "genreContent">
+			
+			
+			ID: <input class="form-control" type="text" name="genreId" id = "genreId" readonly>
+          		Genre Name: <input class="form-control " type="text" name="genreName" id="genreName" placeholder="Please input the new Speciality name">
+          	</div>
+		<!-- <button type="submit" class="btn btn-primary btn-round">Update</button>
+	      </form> -->
+            </div>
+            <div class="modal-footer ">
+        	</div>
+      	 </div>
+     	 <!-- /.modal-content --> 
+     	</div>
+        <!-- /.modal-dialog Genre--> 
+      </div>
+      </div>
+    </div>
+	
+  </div>
+
   <!--   Core JS Files   -->
   <script src="../../../513/1/assets/js/core/jquery.min.js"></script>
   <script src="../../../513/1/assets/js/core/bootstrap.min.js"></script>

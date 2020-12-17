@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.io.*;
+import java.util.*;
 import oracle.jdbc.*;
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -17,25 +18,29 @@ class RegisterBooks{
 	   Connection conn = ods.getConnection();
 
 	   try{
-	     PreparedStatement pstmt = conn.prepareStatement("INSERT INTO books (title,book_isbn,pub_id,author_id,genre_id) VALUES (?,?,?,?,?)");
-	     	
+		Statement stmt = conn.createStatement();
 	        String title = args[0].trim();
 		String isbn = args[1].trim();
 		int publisher = Integer.parseInt(args[2].trim());
-		int author = Integer.parseInt(args[3].trim());
-		int genre = Integer.parseInt(args[4].trim());
+		ArrayList<String> listAuthor = new ArrayList<String>();
+		ArrayList<String> listGenre = new ArrayList<String>();
 
-		//System.out.println(title + isbn + publisher + author + genre);
-		pstmt.setString(1, title);
-		pstmt.setString(2, isbn);
-		pstmt.setInt(3, publisher);
-		pstmt.setInt(4, author);
-		pstmt.setInt(5, genre);
+		for (int i = 3; i < args.length; i++){
+		    if(args[i].trim().contains("a")){
+			listAuthor.add("author_l("+ args[i].trim().replace("a","")+")");
+		    }
+		    else if(args[i].trim().contains("g")){
+			listGenre.add("genre_l(" + args[i].trim().replace("g","") + ")");
+		    }
+		}
+		String query = "INSERT INTO books (title,book_isbn,pub_id,author_id,genre_id) VALUES ('"+title+"','"+ isbn +"', "+ publisher +", ";
+		query += "author_n("+ listAuthor.toString().replace("[","").replace("]","") +"),";
+		query += "genre_n("+ listGenre.toString().replace("[","").replace("]","") +"))";
+		System.out.println(query);
 
-	       	pstmt.execute();
-		
-		pstmt.close();
-		
+		stmt.executeQuery(query);
+		stmt.close();
+						
 	   } catch (SQLException ex) {
 	   	System.out.println(ex);
 	   }
